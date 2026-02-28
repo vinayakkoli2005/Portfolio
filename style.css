@@ -346,7 +346,8 @@ body {
 
 .tech-stack {
     font-size: 0.95rem;
-    color: #ff4d4d !important; /* Lighter red for visibility */
+    color: #ff4d4d !important;
+    /* Lighter red for visibility */
     margin-bottom: 10px !important;
 }
 
@@ -522,7 +523,7 @@ footer p {
     .about-image img {
         max-width: 100%;
     }
-    
+
     .hero-content h1 {
         font-size: 3.8rem;
     }
@@ -530,7 +531,7 @@ footer p {
     .hero-content h2 {
         font-size: 1.5rem;
     }
-    
+
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -542,7 +543,7 @@ footer p {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
@@ -572,7 +573,7 @@ footer p {
     .timeline {
         padding-left: 10px;
     }
-    
+
     .timeline::before {
         left: 10px;
     }
@@ -587,5 +588,101 @@ footer p {
 
     .contact-content {
         padding: 30px 20px;
+    }
+
+    /* Further mobile optimizations */
+    .padding-y {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .nav-logo {
+        font-size: 1.4rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.4rem;
+        margin-top: 100px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .skill-card {
+        padding: 15px;
+    }
+
+    .category-title {
+        font-size: 1.2rem;
+        margin: 30px 0 20px 0;
+    }
+
+    .project-card {
+        margin: 0 10px;
+    }
+
+    .project-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .project-links a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .timeline {
+        margin-top: 20px;
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-info p {
+        font-size: 1rem;
+    }
+
+    .contact-form {
+        padding: 0 10px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+
+    .hero-buttons {
+        gap: 15px;
+    }
+
+    .btn {
+        padding: 12px 20px;
     }
 }
