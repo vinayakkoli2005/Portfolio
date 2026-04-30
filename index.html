@@ -345,27 +345,66 @@ body{background:var(--bg);color:var(--text);font-family:'Share Tech Mono',monosp
 .cf input:focus,.cf textarea:focus{border-color:var(--cyan);box-shadow:0 0 14px rgba(0,212,255,.1)}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:11px}
 
-/* CHARGE BAR */
+/* CHARGE METER */
 #charge-bar{
-  position:fixed;right:18px;top:50%;transform:translateY(-50%);
-  width:3px;height:120px;
-  background:rgba(0,212,255,.08);
-  border:1px solid rgba(0,212,255,.12);
+  position:fixed;right:20px;top:50%;transform:translateY(-50%);
+  width:44px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
   z-index:200;pointer-events:none;
-  opacity:0;transition:opacity .3s;
+  opacity:0;transition:opacity .35s;
 }
-#charge-fill{
-  position:absolute;bottom:0;left:0;right:0;
-  height:0%;
+#charge-label-top{
+  font-family:'Orbitron',sans-serif;
+  font-size:.42rem;letter-spacing:.18em;
+  color:rgba(0,212,255,.5);text-transform:uppercase;
+  text-align:center;line-height:1.3;
+  transition:color .2s;
+}
+#charge-segments{
+  display:flex;flex-direction:column-reverse;gap:3px;
+  align-items:center;
+}
+.cseg{
+  width:28px;height:10px;
+  border:1px solid rgba(0,212,255,.2);
+  background:rgba(0,212,255,.04);
+  position:relative;overflow:hidden;
+  transition:border-color .15s,background .15s,box-shadow .15s;
+}
+.cseg::after{
+  content:'';position:absolute;inset:0;
   background:var(--cyan);
-  transition:height .05s linear,box-shadow .05s;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .12s ease-out;
+}
+.cseg.lit{
+  border-color:rgba(0,212,255,.7);
+  background:rgba(0,212,255,.12);
+  box-shadow:0 0 8px rgba(0,212,255,.35),inset 0 0 6px rgba(0,212,255,.15);
+}
+.cseg.lit::after{transform:scaleX(1);}
+.cseg.crit{border-color:rgba(255,60,94,.8);background:rgba(255,60,94,.1);box-shadow:0 0 10px rgba(255,60,94,.4);}
+.cseg.crit::after{background:var(--red);}
+#charge-pct{
+  font-family:'Orbitron',sans-serif;
+  font-size:.7rem;font-weight:700;
+  color:var(--cyan);
+  text-shadow:0 0 12px var(--cyan-glow);
+  letter-spacing:.06em;
+  transition:color .2s,text-shadow .2s;
 }
 #charge-arrow{
-  position:absolute;bottom:-22px;left:50%;
-  transform:translateX(-50%);
-  font-size:.65rem;color:var(--cyan);
-  text-shadow:0 0 8px var(--cyan);
-  opacity:0;transition:opacity .2s,transform .1s;
+  font-size:.8rem;color:var(--cyan);
+  text-shadow:0 0 10px var(--cyan);
+  opacity:0;transition:opacity .2s,transform .15s;
+  animation:chpulse 0.6s ease-in-out infinite;
+}
+@keyframes chpulse{0%,100%{opacity:.6}50%{opacity:1}}
+#charge-next-label{
+  font-size:.38rem;letter-spacing:.14em;
+  color:rgba(0,212,255,.4);text-transform:uppercase;
+  text-align:center;max-width:60px;line-height:1.4;
+  transition:color .2s;
 }
 
 /* RESPONSIVE */
@@ -738,10 +777,22 @@ function goPage(id){
 window.goPage=goPage;
 
 // SCROLL CHARGE NAV
+const SEG_COUNT=8;
 const chargeBar=document.createElement('div');
 chargeBar.id='charge-bar';
-chargeBar.innerHTML='<div id="charge-fill"></div><div id="charge-arrow">▼</div>';
+chargeBar.innerHTML=`
+  <div id="charge-label-top">WARP<br>CHARGE</div>
+  <div id="charge-segments">${Array.from({length:SEG_COUNT},(_,i)=>`<div class="cseg" data-i="${i}"></div>`).join('')}</div>
+  <div id="charge-pct">0%</div>
+  <div id="charge-arrow">▼</div>
+  <div id="charge-next-label"></div>`;
 document.body.appendChild(chargeBar);
+
+const cSegs=[...chargeBar.querySelectorAll('.cseg')];
+const cPct=document.getElementById('charge-pct');
+const cArrow=document.getElementById('charge-arrow');
+const cNext=document.getElementById('charge-next-label');
+const cLabelTop=document.getElementById('charge-label-top');
 
 let charge=0,chargeDir=0,chargeCooldown=false,chargeDrain=null;
 const CHARGE_MAX=320;
@@ -749,28 +800,42 @@ const CHARGE_MAX=320;
 function setCharge(v,dir){
   charge=Math.max(0,Math.min(CHARGE_MAX,v));
   const pct=charge/CHARGE_MAX;
-  const fill=document.getElementById('charge-fill');
-  const arrow=document.getElementById('charge-arrow');
-  fill.style.height=(pct*100)+'%';
-  fill.style.boxShadow=`0 0 ${6+pct*18}px var(--cyan)`;
-  const opacity=pct>.05?(.3+pct*.7):0;
-  chargeBar.style.opacity=opacity;
-  arrow.textContent=dir>=0?'▼':'▲';
-  arrow.style.opacity=pct>.4?1:0;
-  arrow.style.transform=`translateX(-50%) translateY(${dir>=0?pct*4:-(pct*4)}px)`;
-  // flash and fire at full charge
+  const litCount=Math.round(pct*SEG_COUNT);
+  const isCrit=pct>=.75;
+
+  cSegs.forEach((s,i)=>{
+    s.classList.toggle('lit',i<litCount);
+    s.classList.toggle('crit',i<litCount&&isCrit);
+  });
+
+  const pctInt=Math.round(pct*100);
+  cPct.textContent=pctInt+'%';
+  cPct.style.color=isCrit?'var(--red)':'var(--cyan)';
+  cPct.style.textShadow=isCrit?'0 0 14px var(--red)':'0 0 12px var(--cyan-glow)';
+
+  chargeBar.style.opacity=pct>.04?1:0;
+  cArrow.textContent=dir>=0?'▼':'▲';
+  cArrow.style.opacity=pct>.35?1:0;
+
+  // show next section name
+  const idx=PAGES.findIndex(p=>p.id===currentPage);
+  const nextPg=dir>0?PAGES[idx+1]:PAGES[idx-1];
+  cNext.textContent=nextPg?'→ '+nextPg.label:'';
+  cNext.style.color=isCrit?'rgba(255,60,94,.7)':'rgba(0,212,255,.45)';
+  cLabelTop.style.color=isCrit?'rgba(255,60,94,.7)':'rgba(0,212,255,.5)';
+
   if(charge>=CHARGE_MAX&&!chargeCooldown){
     chargeCooldown=true;
-    fill.style.background='#fff';
-    fill.style.boxShadow='0 0 30px #fff';
+    cSegs.forEach(s=>{s.style.background='#fff';s.style.borderColor='#fff';});
+    cPct.style.color='#fff';
     setTimeout(()=>{
-      fill.style.background='';fill.style.boxShadow='';
+      cSegs.forEach(s=>{s.style.background='';s.style.borderColor='';});
+      cPct.style.color='';
       charge=0;setCharge(0,0);
       chargeCooldown=false;
-      const idx=PAGES.findIndex(p=>p.id===currentPage);
       if(dir>0&&idx<PAGES.length-1)goPage(PAGES[idx+1].id);
       else if(dir<0&&idx>0)goPage(PAGES[idx-1].id);
-    },120);
+    },130);
   }
 }
 
