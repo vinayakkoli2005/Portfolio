@@ -6,7 +6,10 @@
       "Bash(npx --yes serve . --port 3000)",
       "Bash(npx serve *)",
       "Bash(python -m http.server 3000)",
-      "Bash(netstat -ano)"
+      "Bash(netstat -ano)",
+      "Bash(gh repo *)",
+      "mcp__plugin_context-mode_context-mode__ctx_fetch_and_index",
+      "Bash(start index.html)"
     ]
   }
 }
