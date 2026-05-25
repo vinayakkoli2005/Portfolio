@@ -631,10 +631,10 @@ body{background:var(--bg);color:var(--text);font-family:'Share Tech Mono',monosp
               <a href="https://github.com/vinayakkoli2005" target="_blank" class="cla"><div class="cli">&lt;/&gt;</div><div><span class="cll">GitHub</span>vinayakkoli2005</div></a>
             </div>
           </div>
-          <form class="cf" onsubmit="return false;">
-            <div class="fr"><input type="text" placeholder="// NAME" required><input type="email" placeholder="// EMAIL" required></div>
-            <input type="text" placeholder="// SUBJECT">
-            <textarea placeholder="// MESSAGE_BODY" rows="6" required></textarea>
+          <form class="cf" onsubmit="sendMail(event)">
+            <div class="fr"><input id="cf-name" type="text" placeholder="// NAME" required><input id="cf-email" type="email" placeholder="// EMAIL" required></div>
+            <input id="cf-subject" type="text" placeholder="// SUBJECT">
+            <textarea id="cf-msg" placeholder="// MESSAGE_BODY" rows="6" required></textarea>
             <button type="submit" class="btn" style="border:none;text-align:center;padding:12px">TRANSMIT MESSAGE</button>
           </form>
         </div>
@@ -1089,6 +1089,17 @@ function showDetail(n){
 }
 
 window.addEventListener('resize',()=>{if(graphReady&&currentPage==='p-courses'){graphReady=false;initGraph();}rbg();});
+
+// CONTACT FORM
+function sendMail(e){
+  e.preventDefault();
+  const name=document.getElementById('cf-name').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const subject=document.getElementById('cf-subject').value.trim()||'Portfolio Contact';
+  const msg=document.getElementById('cf-msg').value.trim();
+  const body=`Name: ${name}%0AEmail: ${email}%0A%0A${encodeURIComponent(msg)}`;
+  window.location.href=`mailto:vinayak23597@iiitd.ac.in?subject=${encodeURIComponent(subject)}&body=${body}`;
+}
 
 // CERT MODAL
 function openCert(src,title){
