@@ -300,6 +300,9 @@ body{background:var(--bg);color:var(--text);font-family:'Share Tech Mono',monosp
 .pc{border:1px solid rgba(0,212,255,.13);background:rgba(0,212,255,.02);padding:22px;position:relative;transition:border-color .25s,box-shadow .25s;overflow:hidden}
 .cert-card{cursor:pointer}
 .cert-card:hover{border-color:var(--cyan);box-shadow:0 0 18px rgba(0,212,255,.18)}
+.art-abstract{font-size:.68rem;color:var(--cyan);letter-spacing:.08em;margin-bottom:10px;opacity:.8}
+.art-keypoints{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.akp{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border:1px solid rgba(0,255,136,.25);color:var(--green);background:rgba(0,255,136,.04)}
 .pc::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:linear-gradient(180deg,var(--cyan),transparent);transition:height .4s}
 .pc:hover{border-color:rgba(0,212,255,.44);box-shadow:0 0 26px rgba(0,212,255,.07),inset 0 0 26px rgba(0,212,255,.03)}.pc:hover::before{height:100%}
 .pc .hc{position:absolute;width:10px;height:10px;border-color:var(--cyan);border-style:solid;opacity:.48}
@@ -585,7 +588,44 @@ body{background:var(--bg);color:var(--text);font-family:'Share Tech Mono',monosp
       </div>
     </div>
 
-    <!-- PAGE 5: EXPERIENCE -->
+    <!-- PAGE 5: ARTICLES -->
+    <div class="page" id="p-articles">
+      <div class="page-inner">
+        <h2 class="stitle">Academic Writing</h2>
+        <div class="pg">
+          <div class="pc"><div class="hc tl"></div><div class="hc br"></div>
+            <div class="pid">ARTICLE <span>01</span> · POLITICAL ECONOMY</div>
+            <h3>Poverty &amp; Democracy</h3>
+            <p class="art-abstract">Democracy's Missing Link: Agency in India's Poverty Challenge</p>
+            <p>Why hasn't India's democracy lifted its poorest citizens? This paper argues the failure lies not in democracy itself but in democratic agency — examining governance failures, the Gram Sabha experiment, and how access to information (not wealth or caste) determines political participation.</p>
+            <div class="art-keypoints">
+              <span class="akp">Pranab Bardhan's "Big Puzzle"</span>
+              <span class="akp">73rd Amendment &amp; Gram Sabha</span>
+              <span class="akp">Agency over Structure</span>
+              <span class="akp">The "Silent Sex"</span>
+            </div>
+            <div class="ptags"><span class="pt">Political Economy</span><span class="pt">Governance</span><span class="pt">India</span><span class="pt">Democracy</span></div>
+            <div class="plinks"><a href="articles/poverty-and-democracy.html" class="pl pl-live" target="_blank">Read Article</a></div>
+          </div>
+          <div class="pc"><div class="hc tl"></div><div class="hc br"></div>
+            <div class="pid">ARTICLE <span>02</span> · SOCIAL SCIENCES</div>
+            <h3>Multiculturalism &amp; Secularism</h3>
+            <p class="art-abstract">India's Unique Path to Diversity: The Evolving Experiment of Secular Reform</p>
+            <p>India built a constitutional framework of "engaged secularism" — neither fully separating church and state nor merging them. This paper traces how Bajpai's "normative imbalance" between caste justice and religious minority rights shapes India's politics from the Constituent Assembly to the COVID-19 pandemic.</p>
+            <div class="art-keypoints">
+              <span class="akp">Principled Distance</span>
+              <span class="akp">Normative Imbalance</span>
+              <span class="akp">Essential Practices Doctrine</span>
+              <span class="akp">Triple Talaq &amp; Gender Justice</span>
+            </div>
+            <div class="ptags"><span class="pt">Secularism</span><span class="pt">Multiculturalism</span><span class="pt">India</span><span class="pt">Constitutional Law</span></div>
+            <div class="plinks"><a href="articles/multiculturalism-and-secularism.html" class="pl pl-live" target="_blank">Read Article</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 6: EXPERIENCE -->
     <div class="page" id="p-experience">
       <div class="page-inner">
         <h2 class="stitle">Experience & Education</h2>
@@ -740,6 +780,7 @@ const PAGES=[
   {id:'p-about',label:'Profile'},
   {id:'p-courses',label:'Courses'},
   {id:'p-projects',label:'Projects'},
+  {id:'p-articles',label:'Articles'},
   {id:'p-experience',label:'Experience'},
   {id:'p-certificates',label:'Certificates'},
   {id:'p-contact',label:'Contact'},

@@ -1,0 +1,77 @@
+POVERTY & DEMOCRACY
+Democracy's Missing Link: Agency in India's Poverty Challenge
+
+---
+
+India shows a striking contradiction. It is the world's largest and most humane democracy, yet millions of people still live in poverty, suffer from malnutrition, and lack basic education. This problem is not unique to India. A global study by Daupfel and Freytag (2023), covering 140 countries, found that democracy doesn't always lead to lower poverty, especially when power is concentrated in the hands of small groups of elites.
+
+This puzzle is most visible in India. Economist Pranab Bardhan notes that the country is "severely lacking" in social protection, despite the fact that poor citizens are active voters. So why hasn't India's strong democracy improved the lives of the poorest? Research by Bardhan, Parthasarathy and Rao, as well as Anirudh, suggests that the problem isn't democracy itself, but rather how it works in practice. Deep-seated inequalities, inadequate education, and limited access to information hinders ordinary citizens from exercising their democratic powers efficiently. In short, it's not a problem of democracy, but agency.
+
+---
+
+THE GOVERNANCE FAILURE AND THE BIG PUZZLE
+
+In his study, Pranab Bardhan explains the depth of India's inequality. He argues that India's biggest problem is not just income inequality, but the long-standing lack of equal opportunities in land ownership, education, and social status, especially caste. It is not just unfair, but also hurts economic growth by wasting human potential and discouraging productive investment.
+
+Bardhan criticizes India's governance system for failing to protect its people. He points out two major issues:
+
+1. ~94% of workers are employed in the informal sector, where job security and social safety nets are lacking.
+2. Government welfare schemes such as PDS are often poorly managed and corrupt, which he calls a "massive project of theft and waste."
+
+This leads to what Bardhan calls the "big puzzle." If the poor are the majority and vote in large numbers, why don't they elect leaders who provide basic services like education, healthcare, and sanitation? He answers that politics in India often focuses on identity and symbolism — such as caste-based pride or job reservations — rather than real governance and service delivery. In other words, politicians provide people with a symbol of dignity, not systems that actually work.
+
+---
+
+THE DELIBERATIVE EXPERIMENT AND ITS LIMITS
+
+To fix India's top-down and inefficient governance system, the government introduced the 73rd Constitutional Amendment in 1992. This created a system of local democracy where decisions would be made closer to the people. The key institution formed under this law was the Gram Sabha — the village assembly.
+
+According to Ramya and Vijayendra, in their paper, the Gram Sabha is one of the largest experiments in public participation in the world. It allows all adult villagers to meet, discuss, and approve plans for local development.
+
+The authors question the western belief that people must be equal before they have meaningful discussions. In India, they argue, the Gram Sabha is meant to create equality by giving poor and marginalized groups a platform to speak and claim their dignity. Studies show that when these meetings take place, local governance improves — welfare benefits like BPL cards reach the right people more accurately.
+
+However, both Bardhan and Parthasarathy and Rao point out that this system has serious problems:
+
+1. Local elites and politicians often dominate these meetings, using them for their own benefit.
+2. Women, though they attend in large numbers, rarely speak. Researchers call this the "silent sex."
+3. Outside of Kerala, many village assemblies still reflect old caste and gender hierarchies.
+
+This confirms Ambedkar's warning that village democracy could end up reinforcing social inequality instead of removing it.
+
+---
+
+AGENCY OVER STRUCTURE: THE DECISIVE ROLE OF INFORMATION
+
+We are back where we started. Poor people in India vote actively in national elections but often get only symbolic benefits, not real change. They also attend village meetings but many stay silent. So what actually decides who participates meaningfully in democracy?
+
+Anirudh, in his study, challenges the common belief that wealth and social status are the main reasons people take part in politics. He surveyed over 2,000 villagers and 315 local leaders in North India, and his findings were surprising:
+
+- Wealth (land ownership) and caste have very little effect on political participation.
+- What truly matters are gender, education, and access to information.
+
+The study found:
+- Women are far less politically active — about 24 points lower than men on a 100-point participation scale.
+- Each extra year of schooling and each new source of information (like newspapers, radio, or local meetings) greatly increases how much people participate in democracy.
+
+In short, knowledge and awareness — not wealth or caste — decides how active people are in politics.
+
+Krishna's research aligns well with the ideas of Bardhan and Parthasarathy. It shows that structural reform on quotas — like reserving leadership roles for women or lower castes — doesn't make democracy more participatory. Real empowerment comes from giving people education and access to information, which helps them use their voices effectively.
+
+---
+
+CONCLUSION
+
+Together, these analyses reveal the larger picture of India's democratic challenge. The failure to reduce poverty is not a failure of democracy itself, but of democratic agency — poor people's ability to use their rights effectively.
+
+Bardhan highlights the major issue: politics driven by dignity and identity that offers symbolic gestures instead of real services. Parthasarathy and Rao locate this struggle at the grassroots — the Gram Sabha — designed to give voice to the marginalised but often captured by local elites. Krishna identifies the deeper cause of capture: the power of information. The true "elites" are not only the wealthy but the informed. The "silent sex," as Parthasarathy and Rao describe women in village meetings, are held back not only by patriarchy but by a severe lack of education and access to information.
+
+The collective contribution of these papers is a powerful directive for policy. It suggests the path to fewer top-down rights and more investment in people's agency. As Krishna writes, "A democracy with poor information is an incomplete system." The real task is not to wait for growth to end poverty, but to empower citizens — especially women — with education and information so they can turn their democratic rights into real change.
+
+---
+
+REFERENCES
+
+1. Parthasarathy & Rao: Deliberative Democracy in India
+2. Inequality, Inefficiency & Challenges for Social Democracy in India — Economic Transitions by Pranab Bardhan
+3. The Poverty Effect of Democratization by C. Daupfel & Andrees (2023)
+4. Poverty & Democratic Participation Reconsidered: Evidence from Local to Level in India — Anirudh Krishna
