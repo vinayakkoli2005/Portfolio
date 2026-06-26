@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import { CameraRig } from './CameraRig';
 import { Avatar } from './Avatar';
 import { useStore } from '../state/useStore';
+import { ProximityPrompt } from '../interaction/ProximityPrompt';
 
 const SPEED = 6;
 const keys: Record<string, boolean> = {};
@@ -101,6 +102,7 @@ export function PlayerController() {
         </Suspense>
       </group>
       <CameraRig targetRef={visual} yawRef={yaw} />
+      <ProximityPrompt playerRef={visual} />
     </>
   );
 }

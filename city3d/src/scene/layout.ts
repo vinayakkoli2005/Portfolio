@@ -1,6 +1,13 @@
 export type Vec3 = [number, number, number];
 
-export const DISTRICTS: { id: string; label: string; position: Vec3; phase: number }[] = [
+export interface District {
+  id: string;
+  label: string;
+  position: Vec3;
+  phase: number;
+}
+
+export const DISTRICTS: District[] = [
   { id: 'gateway',     label: 'Grand Gateway',      position: [0, 0, 40],    phase: 0 },
   { id: 'temple',      label: 'Central Temple',      position: [0, 0, 10],    phase: 1 },
   { id: 'artisans',    label: "Artisans' Quarter",   position: [-30, 0, 0],   phase: 2 },
