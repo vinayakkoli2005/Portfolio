@@ -8,6 +8,7 @@ import { JourneyCaption } from './ui/JourneyCaption';
 import { HUD } from './ui/HUD';
 import { SkipResumeModal } from './ui/SkipResumeModal';
 import { LoadingScreen } from './ui/LoadingScreen';
+import { TouchControls } from './ui/TouchControls';
 
 export default function App() {
   const [supported, setSupported] = useState(true);
@@ -46,6 +47,7 @@ export default function App() {
       <InfoPanel />
       <JourneyCaption />
       <SkipResumeModal />
+      <TouchControls />
     </div>
   );
 }

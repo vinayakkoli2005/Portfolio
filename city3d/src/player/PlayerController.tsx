@@ -8,9 +8,9 @@ import { Avatar } from './Avatar';
 import { useStore } from '../state/useStore';
 import { ProximityPrompt } from '../interaction/ProximityPrompt';
 import { JourneySystem } from '../scene/JourneySystem';
+import { keys, touchState } from './inputState';
 
 const SPEED = 6;
-const keys: Record<string, boolean> = {};
 
 export function PlayerController() {
   const body = useRef<RapierRigidBody>(null);
@@ -50,6 +50,12 @@ export function PlayerController() {
   useFrame(() => {
     const b = body.current;
     if (!b) return;
+
+    // Apply touch right-stick yaw
+    if (touchState.yawDelta !== 0) {
+      yaw.current -= touchState.yawDelta;
+      touchState.yawDelta = 0;
+    }
 
     const dir = new THREE.Vector3();
     if (keys['KeyW'] || keys['ArrowUp']) dir.z -= 1;
