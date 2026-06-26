@@ -4,6 +4,7 @@ import { City } from './scene/City';
 import { detectWebGL, detectTier } from './ui/webgl';
 import { useStore } from './state/useStore';
 import { InfoPanel } from './ui/InfoPanel';
+import { JourneyCaption } from './ui/JourneyCaption';
 
 export default function App() {
   const [supported, setSupported] = useState(true);
@@ -30,6 +31,7 @@ export default function App() {
         <City />
       </Canvas>
       <InfoPanel />
+      <JourneyCaption />
     </div>
   );
 }

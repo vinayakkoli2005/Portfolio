@@ -7,6 +7,7 @@ import { CameraRig } from './CameraRig';
 import { Avatar } from './Avatar';
 import { useStore } from '../state/useStore';
 import { ProximityPrompt } from '../interaction/ProximityPrompt';
+import { JourneySystem } from '../scene/JourneySystem';
 
 const SPEED = 6;
 const keys: Record<string, boolean> = {};
@@ -103,6 +104,7 @@ export function PlayerController() {
       </group>
       <CameraRig targetRef={visual} yawRef={yaw} />
       <ProximityPrompt playerRef={visual} />
+      <JourneySystem playerRef={visual} />
     </>
   );
 }
