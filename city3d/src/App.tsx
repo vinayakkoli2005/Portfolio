@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { City } from './scene/City';
 import { detectWebGL, detectTier } from './ui/webgl';
 import { useStore } from './state/useStore';
+import { InfoPanel } from './ui/InfoPanel';
 
 export default function App() {
   const [supported, setSupported] = useState(true);
@@ -28,6 +29,7 @@ export default function App() {
       <Canvas shadows camera={{ position: [0, 5, 55], fov: 60 }} dpr={[1, 2]}>
         <City />
       </Canvas>
+      <InfoPanel />
     </div>
   );
 }
