@@ -1,9 +1,10 @@
 import { RigidBody, CapsuleCollider } from '@react-three/rapier';
 import type { RapierRigidBody } from '@react-three/rapier';
 import { useFrame, useThree } from '@react-three/fiber';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState, Suspense } from 'react';
 import * as THREE from 'three';
 import { CameraRig } from './CameraRig';
+import { Avatar } from './Avatar';
 import { useStore } from '../state/useStore';
 
 const SPEED = 6;
@@ -13,8 +14,11 @@ export function PlayerController() {
   const body = useRef<RapierRigidBody>(null);
   const visual = useRef<THREE.Group>(null);
   const yaw = useRef(0);
+  const movingRef = useRef(false);
+  const [moving, setMoving] = useState(false);
   const { gl } = useThree();
   const toggleCamera = useStore((s) => s.toggleCamera);
+  const cameraMode = useStore((s) => s.cameraMode);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -55,10 +59,16 @@ export function PlayerController() {
     const v = b.linvel();
     b.setLinvel({ x: dir.x * SPEED, y: v.y, z: dir.z * SPEED }, true);
 
+    const isMoving = dir.lengthSq() > 0;
+    if (isMoving !== movingRef.current) {
+      movingRef.current = isMoving;
+      setMoving(isMoving);
+    }
+
     const t = b.translation();
     if (visual.current) {
       visual.current.position.set(t.x, t.y, t.z);
-      if (dir.lengthSq() > 0) {
+      if (isMoving) {
         visual.current.rotation.y = Math.atan2(dir.x, dir.z);
       }
     }
@@ -76,11 +86,19 @@ export function PlayerController() {
         <CapsuleCollider args={[0.6, 0.4]} />
       </RigidBody>
       <group ref={visual}>
-        {/* Placeholder capsule body — replaced by Avatar in Task 8 */}
-        <mesh castShadow position={[0, 1, 0]}>
-          <capsuleGeometry args={[0.4, 1.2, 4, 8]} />
-          <meshStandardMaterial color="#cfc3a0" />
-        </mesh>
+        <Suspense
+          fallback={
+            <mesh castShadow position={[0, 1, 0]}>
+              <capsuleGeometry args={[0.4, 1.2, 4, 8]} />
+              <meshStandardMaterial color="#cfc3a0" />
+            </mesh>
+          }
+        >
+          {/* Avatar feet sit at the capsule bottom (capsule center is ~1 unit up) */}
+          <group position={[0, -1, 0]}>
+            <Avatar moving={moving} hidden={cameraMode === 'first'} />
+          </group>
+        </Suspense>
       </group>
       <CameraRig targetRef={visual} yawRef={yaw} />
     </>
