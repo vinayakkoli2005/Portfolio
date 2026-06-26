@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { City } from './scene/City';
 import { detectWebGL, detectTier } from './ui/webgl';
 import { useStore } from './state/useStore';
@@ -7,10 +7,12 @@ import { InfoPanel } from './ui/InfoPanel';
 import { JourneyCaption } from './ui/JourneyCaption';
 import { HUD } from './ui/HUD';
 import { SkipResumeModal } from './ui/SkipResumeModal';
+import { LoadingScreen } from './ui/LoadingScreen';
 
 export default function App() {
   const [supported, setSupported] = useState(true);
   const setQualityTier = useStore((s) => s.setQualityTier);
+  const setLoaded = useStore((s) => s.setLoaded);
 
   useEffect(() => {
     setSupported(detectWebGL());
@@ -29,9 +31,17 @@ export default function App() {
 
   return (
     <div style={{ width: '100vw', height: '100vh', background: '#0D0D0D' }}>
-      <Canvas shadows camera={{ position: [0, 5, 55], fov: 60 }} dpr={[1, 2]}>
-        <City />
+      <Canvas
+        shadows
+        camera={{ position: [0, 5, 55], fov: 60 }}
+        dpr={[1, 2]}
+        onCreated={() => setLoaded(true)}
+      >
+        <Suspense fallback={null}>
+          <City />
+        </Suspense>
       </Canvas>
+      <LoadingScreen />
       <HUD />
       <InfoPanel />
       <JourneyCaption />
