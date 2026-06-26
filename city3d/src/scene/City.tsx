@@ -2,6 +2,7 @@ import { Physics, RigidBody } from '@react-three/rapier';
 import { Environment } from './Environment';
 import { DISTRICTS } from './layout';
 import { PlayerController } from '../player/PlayerController';
+import { ProjectShrines } from './ProjectShrines';
 
 export function City() {
   return (
@@ -24,6 +25,7 @@ export function City() {
         </RigidBody>
       ))}
       <PlayerController />
+      <ProjectShrines />
     </Physics>
   );
 }
